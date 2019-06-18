@@ -9,7 +9,7 @@
       "client": "npm start --prefix client",
       "client-install": "npm install --prefix client",
       "dev": "concurrently \"npm run server \" \"npm run client\"",
-      "format": "prettier \"./**/*.{js,json,html}\" --write"
+      "format": "prettier \"./**/*.{js,html}\" --write"
    },
    "keywords": [],
    "author": "",
