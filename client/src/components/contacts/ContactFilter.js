@@ -12,7 +12,7 @@ const ContactFilter = () => {
       if (filtered === null) {
          text.current.value = "";
       }
-   });
+   }, [filtered]);
 
    // onChange handler
    const onChange = e => {
