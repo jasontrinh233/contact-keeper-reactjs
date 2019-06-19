@@ -7,7 +7,7 @@ import AuthContext from "../../context/auth/authContext";
 const Navbar = ({ title, icon }) => {
    const authContext = useContext(AuthContext);
 
-   const { user } = AuthContext;
+   const { user } = authContext;
 
    if (!user) {
       return (
