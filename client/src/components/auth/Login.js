@@ -16,7 +16,7 @@ const Login = () => {
    // onSubmit handler
    const onSubmit = e => {
       e.preventDefault();
-      //TODO: Login user
+      // TODO: Login user
       console.log("Login submit");
    };
 

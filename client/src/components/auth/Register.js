@@ -1,11 +1,22 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import AuthContext from "../../context/auth/authContext";
 import AlertContext from "../../context/alert/alertContext";
 
 const Register = () => {
+   const authContext = useContext(AuthContext);
    const alertContext = useContext(AlertContext);
 
    // Global context state
+   const { register, error, clearErrors } = authContext;
    const { setAlert, removeAlert } = alertContext;
+
+   // Life cycle
+   useEffect(() => {
+      if (error === "User already exists") {
+         setAlert(error, "danger");
+         clearErrors();
+      }
+   }, [error]);
 
    // Component level state
    const [user, setUser] = useState({
@@ -32,7 +43,11 @@ const Register = () => {
       } else if (password !== password2) {
          setAlert("Passwords do not match", "danger");
       } else {
-         console.log("Register submit");
+         register({
+            name,
+            email,
+            password
+         });
       }
    };
 
@@ -49,6 +64,7 @@ const Register = () => {
                   name="name"
                   value={name}
                   onChange={onChange}
+                  required
                />
             </div>
             <div className="form-group">
@@ -58,6 +74,7 @@ const Register = () => {
                   name="email"
                   value={email}
                   onChange={onChange}
+                  required
                />
             </div>
             <div className="form-group">
@@ -67,6 +84,7 @@ const Register = () => {
                   name="password"
                   value={password}
                   onChange={onChange}
+                  required
                />
             </div>
             <div className="form-group">
@@ -76,6 +94,7 @@ const Register = () => {
                   name="password2"
                   value={password2}
                   onChange={onChange}
+                  required
                />
             </div>
             <input
