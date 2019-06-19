@@ -18,8 +18,9 @@ const ContactForm = () => {
    // Life cycle, first mount
    useEffect(() => {
       if (current !== null) {
-         setContact(current)
-      } else { // clear form
+         setContact(current);
+      } else {
+         // clear form
          setContact({
             name: "",
             email: "",
@@ -50,11 +51,13 @@ const ContactForm = () => {
    // clearAll handler
    const clearAll = () => {
       clearCurrent();
-   }
+   };
 
    return (
       <form onSubmit={onSubmit}>
-         <h2 className="text-primary">{current ? "Edit Contact" : "Add Contact"}</h2>
+         <h2 className="text-primary">
+            {current ? "Edit Contact" : "Add Contact"}
+         </h2>
          <input
             type="text"
             name="name"
@@ -100,11 +103,13 @@ const ContactForm = () => {
                value={current ? "Update Contact" : "Add Contact"}
             />
          </div>
-         {current && 
+         {current && (
             <div>
-               <button className="btn btn-light btn-block" onClick={clearAll}>Clear</button>
+               <button className="btn btn-light btn-block" onClick={clearAll}>
+                  Clear
+               </button>
             </div>
-         }
+         )}
       </form>
    );
 };
