@@ -23,7 +23,8 @@ const ContactForm = () => {
    const onSubmit = e => {
       e.preventDefault();
       contactContext.addContact(contact); // add contact
-      setContact({ // clear form
+      setContact({
+         // clear form
          name: "",
          email: "",
          phone: "",
