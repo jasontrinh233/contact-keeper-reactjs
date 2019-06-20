@@ -8,7 +8,7 @@ const User = require("../models/User");
 const Contact = require("../models/Contact");
 
 // @route   GET api/contacts
-// @desc    Get all users contacts
+// @desc    Get all user's contacts
 // @access  Private
 router.get("/", auth, async (req, res) => {
    try {
@@ -71,8 +71,24 @@ router.put("/:id", (req, res) => {
 // @route   DELETE api/contacts/:id
 // @desc    Update contact
 // @access  Private
-router.delete("/:id", (req, res) => {
-   res.send("Delete contact");
+router.delete("/:id", auth, async (req, res) => {
+   try {
+      const contact = await Contact.findById(req.params.id);
+
+      if (!contact) return res.status(404).json({ msg: "Contact not found" });
+
+      // make sure user owns contact
+      if (contact.user.toString() !== req.user.id) {
+         return res.status(401).json({ msg: "Not authorized" });
+      }
+
+      // delete contact
+      await Contact.findByIdAndRemove(req.params.id);
+      return res.status(200).json({ msg: "Contact removed" });
+   } catch (err) {
+      console.error(err.message.red);
+      return res.status(500).json({ msg: "Server error" });
+   }
 });
 
 module.exports = router;
