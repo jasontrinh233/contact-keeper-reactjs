@@ -6,6 +6,7 @@ import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import Home from "./components/pages/Home";
 import About from "./components/pages/About";
+import NotFound from "./components/pages/NotFound";
 import PrivateRoute from "./components/routing/PrivateRoute";
 
 import AuthState from "./context/auth/AuthState";
@@ -36,6 +37,7 @@ const App = () => {
                            <Route exact path="/login" component={Login} />
                            <PrivateRoute exact path="/" component={Home} />
                            <Route exact path="/about" component={About} />
+                           <Route component={NotFound} />
                         </Switch>
                      </div>
                   </Fragment>
