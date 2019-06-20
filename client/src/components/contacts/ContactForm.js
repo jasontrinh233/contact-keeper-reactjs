@@ -2,12 +2,12 @@ import React, { useState, useContext, useEffect } from "react";
 import ContactContext from "../../context/contact/contactContext";
 
 const ContactForm = () => {
-   // Context hook
    const contactContext = useContext(ContactContext);
 
+   // Global state
    const { current, addContact, updateContact, clearCurrent } = contactContext;
 
-   // State hook
+   // Component state
    const [contact, setContact] = useState({
       name: "",
       email: "",
@@ -15,7 +15,7 @@ const ContactForm = () => {
       type: "personal"
    });
 
-   // Life cycle, first mount
+   // Life cycle
    useEffect(() => {
       if (current !== null) {
          setContact(current);
@@ -41,9 +41,9 @@ const ContactForm = () => {
       e.preventDefault();
 
       if (current === null) {
-         addContact(contact);
+         addContact(contact); // add
       } else {
-         updateContact(contact);
+         updateContact(contact); // update
          clearAll();
       }
    };
