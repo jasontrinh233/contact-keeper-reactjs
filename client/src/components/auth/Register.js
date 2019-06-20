@@ -8,7 +8,7 @@ const Register = props => {
 
    // Global context state
    const { register, error, clearErrors, isAuthenticated } = authContext;
-   const { setAlert, removeAlert } = alertContext;
+   const { setAlert } = alertContext;
 
    // Life cycle
    useEffect(() => {
