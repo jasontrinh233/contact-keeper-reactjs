@@ -2,6 +2,7 @@
    "name": "contact-keeper",
    "version": "1.0.0",
    "description": "Contact manager app",
+   "homepage": "https://sleepy-tundra-17047.herokuapp.com",
    "main": "server.js",
    "scripts": {
       "start": "node server.js",
